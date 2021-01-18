@@ -13,7 +13,6 @@ const ContactList = ({state: {contacts, filter}, addFilter, removeContact}) => {
                 <>
                     <h2>Contacts</h2>
                     <label>
-                        {" "}
                         Find contacts by name
                         <Input type="text" value={filter} name="filter" onChange={addFilter} />
                     </label>

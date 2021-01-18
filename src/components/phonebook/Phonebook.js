@@ -5,13 +5,19 @@ import ContactList from "./contactList/ContactList";
 
 export default class Phonebook extends Component {
     state = {
-        contacts: [
-            {id: uuidv4(), name: "Rosie Simpson", number: "459-12-56"},
-            {id: uuidv4(), name: "Hermione Kline", number: "443-89-12"},
-            {id: uuidv4(), name: "Eden Clements", number: "645-17-79"},
-            {id: uuidv4(), name: "Annie Copeland", number: "227-91-26"},
-        ],
+        contacts: [],
         filter: "",
+    };
+
+    componentDidMount = () => {
+        const localSorageContacts = JSON.parse(localStorage.getItem("contacts"));
+        if (localSorageContacts && localSorageContacts.length > 0) {
+            this.setState({contacts: [...localSorageContacts]});
+        }
+    };
+
+    componentDidUpdate = () => {
+        localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
     };
 
     addFilter = e => {

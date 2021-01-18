@@ -33,6 +33,7 @@ export default class ContactForm extends Component {
     submitHandler = e => {
         e.preventDefault();
         this.props.addContact({...this.state});
+        this.setState({name: "", number: ""});
     };
 
     render() {
